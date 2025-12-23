@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Rare Parfume - E-commerce Website
 
 Website thương mại điện tử chuyên về nước hoa niche và cao cấp với giao diện sang trọng và hiện đại.
@@ -304,3 +305,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 - [Framer Motion](https://www.framer.com/motion/) - Animation library
 - [Express.js](https://expressjs.com/) - Backend framework
 - [PostgreSQL](https://www.postgresql.org/) - Database
+=======
+# web-master
+Website thương mại điện tử chuyên về nước hoa niche và cao cấp với giao diện sang trọng và hiện đại.
+>>>>>>> dc99ba434948ec106befedc14f21c219ed99c007
