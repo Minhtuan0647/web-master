@@ -1,0 +1,398 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Import responsive styles */
+@import './styles/responsive.css';
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+      sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: #ffffff;
+    color: #111827;
+  }
+
+  /* Playfair Display for headings */
+  h1, h2, h3, .font-serif {
+    font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  }
+}
+
+@layer components {
+  /* Primary Button - Amber/Gold Theme */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 bg-amber-500 hover:bg-amber-600 text-white font-semibold py-2.5 px-5 rounded-lg transition-all duration-300 shadow-md hover:shadow-lg text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-amber-500;
+  }
+
+  /* Secondary Button */
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 bg-gray-900 hover:bg-gray-800 text-white font-semibold py-2.5 px-5 rounded-lg transition-all duration-300 shadow-md hover:shadow-lg text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-gray-900;
+  }
+
+  /* Outline Button */
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2 bg-transparent border-2 border-gray-900 text-gray-900 hover:bg-gray-900 hover:text-white font-semibold py-2.5 px-5 rounded-lg transition-all duration-300 text-sm;
+  }
+  
+  /* Card Component */
+  .card {
+    @apply bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300;
+  }
+  
+  /* Input Label */
+  .input-label {
+    @apply block text-sm font-semibold text-gray-900 mb-2;
+  }
+
+  /* Input Field */
+  .input-field {
+    @apply w-full px-4 py-2.5 border border-gray-200 rounded-lg bg-white text-sm text-gray-900 placeholder-gray-400 focus:border-amber-500 focus:ring-2 focus:ring-amber-500 focus:outline-none transition-all duration-300;
+  }
+
+  /* Section Title */
+  .section-title {
+    @apply text-2xl sm:text-3xl font-serif font-bold text-gray-900 mb-2;
+  }
+
+  /* Section Subtitle */
+  .section-subtitle {
+    @apply text-gray-600 max-w-2xl mx-auto;
+  }
+
+  /* Product Grid */
+  .product-grid {
+    @apply grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6;
+  }
+}
+
+@layer utilities {
+  /* Animation Delays */
+  .animation-delay-200 {
+    animation-delay: 200ms;
+  }
+  
+  .animation-delay-400 {
+    animation-delay: 400ms;
+  }
+  
+  .animation-delay-600 {
+    animation-delay: 600ms;
+  }
+  
+  /* Spacing Utilities */
+  .section-padding {
+    @apply py-12 lg:py-16;
+  }
+  
+  .container-padding {
+    @apply px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Line Clamp (for truncating text) */
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #d4af37;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #b8941f;
+}
+
+/* Loading animation */
+.loading-spinner {
+  border: 3px solid #f3f3f3;
+  border-top: 3px solid #d4af37;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Fade in animation */
+.fade-in {
+  animation: fadeIn 0.6s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Slide up animation */
+.slide-up {
+  animation: slideUp 0.8s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Product Card Image Hover Effect */
+.product-image-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.product-image-container img {
+  transition: opacity 0.3s ease-in-out;
+}
+
+.product-image-container .primary-image {
+  position: relative;
+  z-index: 1;
+}
+
+.product-image-container .secondary-image {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  opacity: 0;
+}
+
+.product-image-container:hover .primary-image {
+  opacity: 0;
+}
+
+.product-image-container:hover .secondary-image {
+  opacity: 1;
+  z-index: 1;
+}
+
+/* Hero Slider */
+.hero-slider {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.hero-slide.active {
+  opacity: 1;
+}
+
+/* Dropdown Menu Styles */
+.dropdown-menu {
+  @apply absolute left-0 top-full mt-0 w-48 bg-white rounded-b-lg shadow-lg border border-gray-100 py-2 opacity-0 invisible transition-all duration-200;
+}
+
+.dropdown-trigger:hover .dropdown-menu,
+.dropdown-menu:hover {
+  @apply opacity-100 visible;
+}
+
+/* Toast Notifications */
+.Toaster {
+  z-index: 9999;
+}
+
+/* Mobile Bottom Spacing for Floating Actions */
+@media (max-width: 639px) {
+  main {
+    padding-bottom: 64px;
+  }
+}
+
+/* Swiper Custom Styles */
+.swiper-button-next,
+.swiper-button-prev {
+  color: #d4af37 !important;
+  background-color: rgba(255, 255, 255, 0.9);
+  width: 40px !important;
+  height: 40px !important;
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  font-size: 18px !important;
+  font-weight: bold;
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+  background-color: #ffffff;
+  transform: scale(1.1);
+}
+
+.swiper-pagination-bullet {
+  background-color: #d1d5db !important;
+  opacity: 1 !important;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: #d4af37 !important;
+  width: 24px !important;
+  border-radius: 4px !important;
+}
+
+/* Form Focus States */
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: #d4af37;
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+}
+
+/* Link Underline Animation */
+.link-underline {
+  position: relative;
+}
+
+.link-underline::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 0;
+  height: 2px;
+  background-color: #d4af37;
+  transition: width 0.3s ease;
+}
+
+.link-underline:hover::after {
+  width: 100%;
+}
+
+/* Badge Styles */
+.badge {
+  @apply inline-flex items-center px-2 py-1 text-xs font-semibold rounded;
+}
+
+.badge-amber {
+  @apply bg-amber-100 text-amber-800;
+}
+
+.badge-green {
+  @apply bg-green-100 text-green-800;
+}
+
+.badge-red {
+  @apply bg-red-100 text-red-800;
+}
+
+.badge-gray {
+  @apply bg-gray-100 text-gray-800;
+}
+
+/* Price Display */
+.price {
+  @apply font-semibold text-gray-900;
+}
+
+.price-original {
+  @apply text-gray-400 line-through text-sm;
+}
+
+.price-sale {
+  @apply text-red-600 font-bold;
+}
+
+/* Responsive Typography */
+@media (max-width: 640px) {
+  .section-title {
+    @apply text-xl;
+  }
+}
+
+/* Image Lazy Loading Placeholder */
+img[data-src] {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* Selection Color */
+::selection {
+  background-color: #d4af37;
+  color: white;
+}
+
+/* Focus Visible for Accessibility */
+:focus-visible {
+  outline: 2px solid #d4af37;
+  outline-offset: 2px;
+}
+
+/* Aspect Ratio Fallback */
+.aspect-square {
+  aspect-ratio: 1 / 1;
+}
+
+@supports not (aspect-ratio: 1 / 1) {
+  .aspect-square::before {
+    content: '';
+    float: left;
+    padding-top: 100%;
+  }
+  .aspect-square::after {
+    content: '';
+    display: block;
+    clear: both;
+  }
+}

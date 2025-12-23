@@ -1,0 +1,198 @@
+---
+alwaysApply: true
+---
+# Rare Parfume Project Rules
+
+## 🎯 Tổng quan dự án
+Đây là website thương mại điện tử chuyên về nước hoa niche và cao cấp với:
+- Frontend: React 18 + Tailwind CSS + Framer Motion
+- Backend: Node.js + Express.js + SQLite (development) / PostgreSQL (production)
+- Admin Panel: React 18 riêng biệt trên port 3001
+- State Management: React Query + Context API
+
+## 📁 Cấu trúc dự án (TUYỆT ĐỐI TUÂN THỦ)
+
+```
+website/
+├── frontend/                    # React frontend (Website bán hàng - port 3000)
+│   ├── src/
+│   │   ├── components/         # Reusable components (ProductCard, BlogCard, Header, Footer)
+│   │   ├── pages/              # Page components (HomePage, ProductsPage, etc.)
+│   │   ├── context/            # React Context (CartContext)
+│   │   ├── services/           # API services (api.js)
+│   │   └── App.js              # Main App component
+│   └── public/                 # Static assets
+├── frontend/admin/              # React admin frontend (OMS - port 3001)
+│   ├── src/
+│   │   ├── components/         # Admin components (ProtectedRoute)
+│   │   ├── pages/              # Admin pages (AdminDashboardPage, AdminProductsPage, etc.)
+│   │   ├── services/           # Admin API services (api.js)
+│   │   └── App.js              # Admin App component
+│   └── public/                 # Admin static assets
+├── backend/                     # Node.js backend (port 5000)
+│   ├── routes/                 # API routes (products.js, orders.js, admin.js, blogs.js, feedback.js)
+│   ├── config/                 # Config files (database.js, security.js)
+│   ├── database/               # Database files và scripts
+│   └── server.js              # Main server file
+└── database/                    # Database schema scripts
+    └── schema.sql             # Database schema
+```
+
+## 🚫 QUY TẮC NGHIÊM NGẶT
+
+### 1. DỮ LIỆU THẬT - KHÔNG MOCK DATA
+- ❌ KHÔNG BAO GIỜ tạo mock data, sample data, hoặc fake data
+- ❌ KHÔNG BAO GIỜ tạo file mock-data.sql, sample-data.sql, hoặc các file tương tự
+- ❌ KHÔNG BAO GIỜ return hardcoded data trong API services
+- ✅ LUÔN LUÔN sử dụng API endpoints thực tế từ backend
+- ✅ LUÔN LUÔN fetch dữ liệu từ database thông qua API
+- ✅ Nếu cần dữ liệu test, chỉ tạo thông qua admin panel hoặc database scripts được yêu cầu
+
+### 2. KHÔNG TẠO FILE KHÔNG CẦN THIẾT
+- ❌ KHÔNG BAO GIỜ tạo file demo, example, test, debug, hoặc temporary files
+- ❌ KHÔNG BAO GIỜ tạo file .bat hoặc .sh scripts trừ khi được yêu cầu cụ thể
+- ❌ KHÔNG BAO GIỜ tạo file documentation không cần thiết (DEMO.md, MOCK_DATA_README.md, etc.)
+- ❌ KHÔNG BAO GIỜ tạo build folders (chúng sẽ được tạo tự động khi build)
+- ❌ KHÔNG BAO GIỜ tạo duplicate folders hoặc files
+- ✅ CHỈ tạo file khi được người dùng yêu cầu cụ thể
+- ✅ Nếu không chắc chắn, HỎI trước khi tạo file mới
+
+### 3. THIẾT KẾ VÀ KIẾN TRÚC
+
+#### Frontend (Website bán hàng):
+- Sử dụng Tailwind CSS cho styling
+- Sử dụng Framer Motion cho animations
+- Sử dụng Lucide React cho icons
+- Responsive design: mobile-first approach
+- Màu sắc chính: amber/gold palette
+- Typography: Inter (body) + Playfair Display (headings)
+
+#### Frontend Admin:
+- Tách biệt hoàn toàn với frontend chính
+- Chạy trên port 3001
+- Sử dụng cùng tech stack nhưng UI khác biệt
+- Phân quyền: Admin và Sale roles
+
+#### Backend:
+- Express.js với RESTful API
+- SQLite cho development, PostgreSQL cho production
+- JWT authentication cho admin
+- Express-validator cho validation
+- Helmet và CORS cho security
+
+### 4. CODING STANDARDS
+
+#### React Components:
+- Sử dụng functional components với hooks
+- Sử dụng React Query cho data fetching
+- Sử dụng Context API cho global state (Cart)
+- Component naming: PascalCase (ProductCard.js)
+- File naming: PascalCase cho components, camelCase cho utilities
+
+#### API Services:
+- Tất cả API calls phải qua services/api.js
+- Sử dụng axios với interceptors
+- Error handling phải có toast notifications
+- Loading states phải được hiển thị
+
+#### Backend Routes:
+- RESTful conventions
+- Validation với express-validator
+- Error handling với try-catch
+- Response format: { data, message, error }
+
+### 5. DATABASE
+- Schema được định nghĩa trong database/schema.sql
+- SQLite cho development: backend/database/rare_parfume.db
+- Không tạo sample data trừ khi được yêu cầu
+- Migration scripts chỉ tạo khi cần thiết
+
+### 6. FILE NAMING CONVENTIONS
+- Components: PascalCase (AdminDashboardPage.js)
+- Utilities: camelCase (api.js, utils.js)
+- Config files: lowercase (database.js, security.js)
+- Database files: lowercase với hyphens (schema.sqlite.sql)
+
+### 7. IMPORT RULES
+- Luôn sử dụng relative imports
+- Group imports: React → Third-party → Local
+- Sử dụng named exports cho components
+- Sử dụng default exports cho pages
+
+### 8. ERROR HANDLING
+- Frontend: Sử dụng react-hot-toast cho notifications
+- Backend: Trả về error messages rõ ràng
+- Console.log chỉ cho debugging, xóa sau khi hoàn thành
+- Error messages phải bằng tiếng Việt cho user-facing
+
+### 9. COMMENTS VÀ DOCUMENTATION
+- Code phải tự giải thích (self-documenting)
+- Chỉ comment khi logic phức tạp
+- API documentation trong backend/routes/API_DOCUMENTATION.md
+- README.md là nguồn chính cho hướng dẫn
+
+### 10. SECURITY
+- Không hardcode secrets hoặc API keys
+- Sử dụng environment variables (.env)
+- JWT tokens cho authentication
+- Input validation trên cả frontend và backend
+- SQL injection prevention với parameterized queries
+
+## ✅ CHECKLIST TRƯỚC KHI TẠO FILE MỚI
+
+Trước khi tạo bất kỳ file nào, hỏi:
+1. File này có thực sự cần thiết không?
+2. Có file tương tự đã tồn tại không?
+3. Người dùng có yêu cầu tạo file này không?
+4. File này có phù hợp với cấu trúc dự án không?
+
+## 🎨 UI/UX GUIDELINES
+
+### Colors:
+- Primary: Amber/Gold (#d4af37, #f59e0b)
+- Background: White, Slate-50, Amber-50
+- Text: Slate-900 (primary), Slate-600 (secondary), Slate-500 (tertiary)
+- Success: Emerald-600
+- Error: Rose-600
+- Warning: Amber-600
+
+### Spacing:
+- Sử dụng Tailwind spacing scale
+- Consistent padding và margin
+- Responsive spacing với breakpoints
+
+### Typography:
+- Headings: Playfair Display (serif)
+- Body: Inter (sans-serif)
+- Font sizes: text-xs, text-sm, text-base, text-lg, text-xl, text-2xl, text-3xl
+
+### Buttons:
+- Primary: bg-amber-500 hover:bg-amber-600
+- Secondary: border border-slate-200 hover:bg-slate-100
+- Danger: bg-rose-500 hover:bg-rose-600
+
+## 📝 NOTES QUAN TRỌNG
+
+1. **Luôn sử dụng Context7** khi cần documentation hoặc code generation
+2. **Không tạo mock data** - chỉ sử dụng dữ liệu thật từ database
+3. **Không tạo file không cần thiết** - hỏi trước khi tạo
+4. **Tuân thủ cấu trúc dự án** - không tạo folder/file ngoài cấu trúc đã định
+5. **Code phải production-ready** - không để TODO, console.log, hoặc debug code
+6. **Error handling đầy đủ** - mọi API call phải có error handling
+7. **Responsive design** - mọi component phải responsive
+8. **Accessibility** - sử dụng semantic HTML và ARIA labels khi cần
+
+## 🔄 WORKFLOW
+
+1. Đọc yêu cầu của người dùng
+2. Kiểm tra cấu trúc dự án hiện tại
+3. Xác định file/folder cần thay đổi
+4. **KHÔNG** tạo file mới trừ khi được yêu cầu
+5. Code theo standards đã định
+6. Test và đảm bảo không có lỗi
+7. Clean up code (xóa console.log, comments không cần thiết)
+
+---
+
+**QUAN TRỌNG**: Nếu không chắc chắn về bất kỳ điều gì, HỎI người dùng trước khi thực hiện!
+

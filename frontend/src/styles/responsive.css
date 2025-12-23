@@ -1,0 +1,275 @@
+/* Responsive Design Enhancements */
+
+/* Mobile-first approach */
+@media (max-width: 640px) {
+  /* Typography adjustments for mobile */
+  .text-responsive-xl {
+    font-size: 1.5rem; /* 24px */
+    line-height: 2rem; /* 32px */
+  }
+  
+  .text-responsive-lg {
+    font-size: 1.25rem; /* 20px */
+    line-height: 1.75rem; /* 28px */
+  }
+  
+  .text-responsive-base {
+    font-size: 0.875rem; /* 14px */
+    line-height: 1.25rem; /* 20px */
+  }
+  
+  /* Button adjustments */
+  .btn-mobile {
+    padding: 0.75rem 1rem;
+    font-size: 0.875rem;
+  }
+  
+  /* Card adjustments */
+  .card-mobile {
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  /* Grid adjustments */
+  .grid-mobile {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  /* Spacing adjustments */
+  .space-mobile-y > * + * {
+    margin-top: 0.75rem;
+  }
+  
+  /* Form adjustments */
+  .form-mobile input,
+  .form-mobile select,
+  .form-mobile textarea {
+    padding: 0.75rem;
+    font-size: 1rem;
+  }
+  
+  /* Navigation adjustments */
+  .nav-mobile {
+    padding: 0.5rem;
+  }
+  
+  /* Hide elements on mobile */
+  .hide-mobile {
+    display: none;
+  }
+  
+  /* Show elements only on mobile */
+  .show-mobile {
+    display: block;
+  }
+}
+
+/* Tablet adjustments */
+@media (min-width: 641px) and (max-width: 1024px) {
+  .text-responsive-xl {
+    font-size: 2rem; /* 32px */
+    line-height: 2.5rem; /* 40px */
+  }
+  
+  .text-responsive-lg {
+    font-size: 1.5rem; /* 24px */
+    line-height: 2rem; /* 32px */
+  }
+  
+  .grid-tablet {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+  
+  .hide-tablet {
+    display: none;
+  }
+  
+  .show-tablet {
+    display: block;
+  }
+}
+
+/* Desktop adjustments */
+@media (min-width: 1025px) {
+  .text-responsive-xl {
+    font-size: 2.5rem; /* 40px */
+    line-height: 3rem; /* 48px */
+  }
+  
+  .text-responsive-lg {
+    font-size: 1.875rem; /* 30px */
+    line-height: 2.25rem; /* 36px */
+  }
+  
+  .grid-desktop {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+  
+  .hide-desktop {
+    display: none;
+  }
+  
+  .show-desktop {
+    display: block;
+  }
+}
+
+/* Large desktop adjustments */
+@media (min-width: 1280px) {
+  .grid-large {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+  }
+}
+
+/* Touch-friendly adjustments */
+@media (hover: none) and (pointer: coarse) {
+  /* Increase touch targets */
+  button, 
+  .btn,
+  input[type="button"],
+  input[type="submit"] {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* Increase spacing for touch */
+  .touch-spacing > * + * {
+    margin-top: 1rem;
+  }
+  
+  /* Larger form elements */
+  input, 
+  select, 
+  textarea {
+    min-height: 44px;
+    padding: 0.75rem;
+  }
+}
+
+/* High DPI displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  /* Ensure crisp images */
+  img {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+}
+
+/* Landscape orientation adjustments */
+@media (orientation: landscape) and (max-height: 500px) {
+  /* Reduce vertical spacing in landscape */
+  .landscape-compact {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+  
+  /* Adjust header height */
+  .header-landscape {
+    height: 3rem;
+  }
+}
+
+/* Print styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  
+  .print-only {
+    display: block !important;
+  }
+  
+  /* Ensure good contrast for printing */
+  * {
+    color: #000 !important;
+    background: #fff !important;
+  }
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .auto-dark {
+    background-color: #1f2937;
+    color: #f9fafb;
+  }
+  
+  .auto-dark input,
+  .auto-dark select,
+  .auto-dark textarea {
+    background-color: #374151;
+    color: #f9fafb;
+    border-color: #4b5563;
+  }
+}
+
+/* Focus improvements for keyboard navigation */
+.focus-visible:focus {
+  outline: 2px solid #f59e0b;
+  outline-offset: 2px;
+}
+
+/* Skip link for accessibility */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 6px;
+  background: #000;
+  color: #fff;
+  padding: 8px;
+  text-decoration: none;
+  z-index: 1000;
+}
+
+.skip-link:focus {
+  top: 6px;
+}
+
+/* Loading states */
+.loading-skeleton {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Error states */
+.error-shake {
+  animation: shake 0.5s ease-in-out;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+/* Success states */
+.success-pulse {
+  animation: pulse 0.5s ease-in-out;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
